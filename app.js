@@ -36,7 +36,7 @@ text("score "+score,10,30);
       score = score + 1;
     }
     enemy.position.y = 0;
-    enemy.position.x = random(0, 300);
+    enemy.position.x = random(0, 600);
   }
     
   enemy.position.y = enemy.position.y + 15;
