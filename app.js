@@ -1,5 +1,6 @@
 var player;
 var enemy;
+var score=0;
 
 function setup() {
   createCanvas(600, 500, 40);
@@ -14,6 +15,10 @@ function setup() {
 function draw() {
   background(0, 0, 9);
   
+  textSize(32);
+text("score "+score,10,30);
+  fill(0, 102, 153);
+    
   if (keyDown(LEFT_ARROW)) {
     player.position.x -= 8;
   }
@@ -27,6 +32,9 @@ function draw() {
     player.position.y += 8;
   }  
   if (enemy.position.y > 500) {
+    if (!player.dead) {
+      score = score + 1;
+    }
     enemy.position.y = 0;
     enemy.position.x = random(0, 300);
   }
@@ -35,6 +43,7 @@ function draw() {
   
   if(player.overlap(enemy)) {
     player.remove();
+    player.dead = true;
   }
   drawSprites();
 }
